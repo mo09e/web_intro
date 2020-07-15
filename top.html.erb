@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="css.css">
+    <title>ゴーヤは美味しい</title>
+  </head>
+  <body>
+    <br><br>
+    <p class="title">夏はゴーヤが美味しい</p>
+    <% require 'pg' %>
+    <% connection = PG::connect(dbname: "goya") %>
+    <% connection.internal_encoding = "UTF-8" %>
+
+    <% result = connection.exec("SELECT length,quality,date FROM crops WHERE quality = false;") %>
+    <% data = [] %>
+    <% result.each do |record| %>
+    <%  data << "ゴーヤの大きさ：#{record["length"]} 品質：#{record["quality"]} 収穫日：#{record["quality"]}" %>
+    <% end %>
+    <form action="goya.cgi" method="POST">
+       <p>下記のボタンを押すと、ゴーヤの大きさと品質、収穫日の情報ページに飛びます</p>
+       <!-- valueには、送りたいデータを代入する -->
+       <!-- name="goya"を、情報の目印とする -->
+      <input type="text" name="goya" value="<%= data.join(' ') %>">
+      <input type="submit" name="見る" class="btn">
+    </form>
+  </body>
+</html>

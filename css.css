@@ -1,0 +1,26 @@
+.title {
+  color: green;
+  border: solid 3px #FFC778;
+  padding: 0.5em;
+  border-radius: 0.5em;
+  width: 250px;
+  font-size: 1.5rem;
+}
+
+.btn {
+  position: relative;
+  display: inline-block;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: #FFF;
+  background: #FFC778;
+  border: solid 1px #FFC778;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.2);
+  text-shadow: 0 1px 0 rgba(0,0,0,0.2);
+}
+.btn:active {
+  border: solid 1px #FFC778;
+  box-shadow: none;
+  text-shadow: none;
+}
